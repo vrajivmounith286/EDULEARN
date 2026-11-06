@@ -1,0 +1,275 @@
+/* ============================================================
+   EDULEARN — Animations & Micro-interactions
+   ============================================================ */
+
+/* Number count-up */
+@keyframes countUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.count-up { animation: countUp 0.5s ease; }
+
+/* Card entrance */
+@keyframes cardEntrance {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.card-entrance { animation: cardEntrance 0.5s ease forwards; }
+.card-entrance:nth-child(1) { animation-delay: 0.05s; }
+.card-entrance:nth-child(2) { animation-delay: 0.10s; }
+.card-entrance:nth-child(3) { animation-delay: 0.15s; }
+.card-entrance:nth-child(4) { animation-delay: 0.20s; }
+.card-entrance:nth-child(5) { animation-delay: 0.25s; }
+.card-entrance:nth-child(6) { animation-delay: 0.30s; }
+
+/* Shimmer loading */
+@keyframes shimmer {
+  0% { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 100%);
+  background-size: 600px 100%;
+  animation: shimmer 1.5s ease infinite;
+}
+
+/* Typing cursor */
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typing-cursor::after {
+  content: '▋';
+  display: inline-block;
+  animation: blinkCursor 0.8s ease infinite;
+  font-size: 0.9em;
+  color: var(--color-primary);
+  margin-left: 2px;
+}
+
+/* Pulse ring */
+@keyframes pulseRing {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108,99,255,0.5); }
+  70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(108,99,255,0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108,99,255,0); }
+}
+.pulse-ring { animation: pulseRing 2s infinite; }
+
+/* Score ring animation */
+@keyframes scoreRingFill {
+  from { stroke-dashoffset: 339.292; }
+}
+.score-ring-animate { animation: scoreRingFill 1.5s ease forwards; }
+
+/* Bounce in */
+@keyframes bounceIn {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); }
+  80% { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.bounce-in { animation: bounceIn 0.6s cubic-bezier(0.36,0.07,0.19,0.97) forwards; }
+
+/* Glow pulse */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(108,99,255,0.3); }
+  50% { box-shadow: 0 0 40px rgba(108,99,255,0.6), 0 0 60px rgba(0,212,170,0.2); }
+}
+.glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+
+/* Progress bar fill animation */
+@keyframes progressFill {
+  from { width: 0%; }
+}
+.progress-animated { animation: progressFill 1s ease forwards; }
+
+/* Ripple effect on click */
+.ripple-container { position: relative; overflow: hidden; }
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255,255,255,0.18);
+  pointer-events: none;
+  animation: rippleEffect 0.6s linear;
+}
+@keyframes rippleEffect {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* Shake animation for errors */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+.shake { animation: shake 0.4s ease; }
+
+/* Confetti particle */
+@keyframes confettiFall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+.confetti-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  animation: confettiFall linear forwards;
+}
+
+/* Nav item hover underline */
+.nav-item {
+  position: relative;
+}
+.nav-item::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 6px;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.nav-item.active::after { transform: scaleX(1); }
+
+/* Gradient border on focus */
+@keyframes borderGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(108,99,255,0.4); }
+  50% { box-shadow: 0 0 0 4px rgba(108,99,255,0.15); }
+}
+input:focus, select:focus, textarea:focus {
+  animation: borderGlow 2s ease infinite;
+}
+
+/* Stats number animation */
+.stat-value { transition: all 0.4s ease; }
+
+/* Floating labels */
+.floating-label { position: relative; }
+.floating-label input { padding-top: 20px; }
+.floating-label label {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label {
+  top: 6px;
+  font-size: 11px;
+  color: var(--color-primary);
+}
+
+/* Message entrance variations */
+.message:nth-child(odd) { animation-duration: 0.25s; }
+.message:nth-child(even) { animation-duration: 0.35s; }
+
+/* Background grid pattern */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(108,99,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,99,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Orb animations */
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(108,99,255,0.12);
+  top: -100px;
+  left: -100px;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(0,212,170,0.08);
+  bottom: -50px;
+  right: -50px;
+  animation: orbFloat 10s ease-in-out infinite reverse;
+}
+
+/* Subject card hover effect */
+.subject-card { position: relative; overflow: hidden; }
+.subject-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(108,99,255,0.15) 0%, transparent 70%);
+  transition: width 0.4s ease, height 0.4s ease, top 0.4s ease, left 0.4s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+.subject-card:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Quiz option ripple */
+.quiz-option { position: relative; overflow: hidden; }
+
+/* Skeleton loading */
+.skeleton { height: 14px; border-radius: 7px; margin-bottom: 8px; }
+.skeleton:last-child { width: 70%; }
+
+/* Achievement badge pop */
+@keyframes achievementPop {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.achievement-pop { animation: achievementPop 0.5s cubic-bezier(0.36,0.07,0.19,0.97) forwards; }
+
+/* Gradient text pulse */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-gradient-text {
+  background: linear-gradient(135deg, #6C63FF, #00D4AA, #FF6B6B, #6C63FF);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 5s ease infinite;
+}
+
+/* Stagger animations for lists */
+.stagger-children > * {
+  opacity: 0;
+  animation: slideUp 0.4s ease forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.20s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.30s; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
